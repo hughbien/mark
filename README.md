@@ -1,27 +1,48 @@
 # Mark
 
-Command line utility to render markdown into a template.
-
-## Installation
-
-TODO: Write installation instructions here
+Command line utility to preview markdown in a browser.
 
 ## Usage
 
-TODO: Write usage instructions here
+Render a markdown file in your browser:
 
-## Development
+```
+mark <file.md>
+```
 
-TODO: Write development instructions here
+By default, this renders markdown into the file `~/.mark/mark.html`. You can specify a different
+file location via the `-f`/`--file` option. Or set the `MARKFILE` env var:
 
-## Contributing
+```
+mark --file /path/to/file.html <file.md>
+```
 
-1. Fork it (<https://github.com/hughbien/mark>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+You can create your own template too. Just create an HTML template, the string `#{BODY}` will be
+substituted with the rendered markdown. The default location for the template is
+`~/.mark/template.html`. Or you can specify it with `-t`/`--template`.
 
-## Contributors
+```
+mark --template /path/to/template.html <file.md>
+```
 
-- [Hugh Bien](http://hughbien.com) - creator and maintainer
+Mark uses `open` to open the rendered file by default. To override this, either use the `MARKOPEN`
+env var or `-o`/`--open` option. Pass a string with the `%` placeholder, which will be the filename.
+
+```
+mark --open "firefox %" <file.md>
+```
+
+## TODO
+
+* add compilation to binary
+* add option parser
+* add markdown renderer (to ~/.mark/mark.html)
+* add markdown render to specific file (via --file option)
+* add opening file in browser (via open)
+* add template
+* add template override (via --template option)
+* add env file option (via MARKFILE)
+* add template option (via ~/.mark/template.html)
+* add open command option (via --open=)
+* add open env var option (via MARKOPEN)
+* add binary package and install instructions to README
