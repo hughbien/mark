@@ -1,0 +1,13 @@
+name: mark
+version: 0.1.0
+
+authors:
+  - Hugh Bien <hugh@hughbien.com>
+
+targets:
+  mark:
+    main: src/mark.cr
+
+crystal: 0.33.0
+
+license: MIT
