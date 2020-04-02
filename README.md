@@ -10,22 +10,22 @@ Render a markdown file in your browser:
 mark <file.md>
 ```
 
-By default, this renders markdown into the file `~/.mark/mark.html`. You can specify a different
-file location via the `-f`/`--file` option. Or set the `MARKFILE` env var:
+By default, this renders markdown into the target file `~/.mark/index.html`. You can specify a
+different target location via the `-t`/`--target` option. Or set the `MARK_TARGET` env var:
 
 ```
-mark --file /path/to/file.html <file.md>
+mark --target /path/to/target.html <file.md>
 ```
 
 You can create your own template too. Just create an HTML template, the string `#{BODY}` will be
 substituted with the rendered markdown. The default location for the template is
-`~/.mark/template.html`. Or you can specify it with `-t`/`--template`.
+`~/.mark/template.html`. Or you can specify it with `-T`/`--template`.
 
 ```
 mark --template /path/to/template.html <file.md>
 ```
 
-Mark uses `open` to open the rendered file by default. To override this, either use the `MARKOPEN`
+Mark uses `open` to open the rendered file by default. To override this, either use the `MARK_OPEN`
 env var or `-o`/`--open` option. Pass a string with the `%` placeholder, which will be the filename.
 
 ```
@@ -54,13 +54,17 @@ crystal build src/cli.cr --release
 
 ## TODO
 
-* add markdown renderer (to ~/.mark/mark.html)
-* add markdown render to specific file (via --file option)
-* add opening file in browser (via open)
-* add template
-* add template override (via --template option)
-* add env file option (via MARKFILE)
-* add template option (via ~/.mark/template.html)
+* add markdown render to specific target (via --target option)
+* add env target option (via MARK_TARGET)
+* add opening target in browser (via open)
 * add open command option (via --open=)
-* add open env var option (via MARKOPEN)
+* add open env var option (via MARK_OPEN)
+* add template
+* add template override (via ~/.mark/template.html)
+* add template override (via --template option)
 * add binary package and install instructions to README
+* handle error: no sources given
+* handle error: invalid sources (eg cannot read or does not exist)
+* handle error: invalid target (eg cannot write)
+* handle error: invalid template (eg cannot read or does not exist)
+* handle error: invalid open command
