@@ -19,7 +19,7 @@ module Mark::Template
     font-family: lucida grande, helvetica, sans-serif; }
   h1,h2,h3,h4,h5,h6 { font-weight: bold; font-family: Copperplate / Copperplate Gothic Light, sans-serif; }
   h1 { margin: 36px 0 24px; color: #111; border-bottom: 1px solid #e0e0e0; 
-    padding-bottom: 6px; font-size: 2.4em; }
+    padding-bottom: 6px; font-size: 2.4em; line-height: 1.2em; }
   h1 + p, h1 + ol, h1 + ul { margin-top: -12px; }
   h2, h3, h4, h5, h6 { margin: 24px 0; color: #111; }
   h2 + p, h2 + ol, h2 + ul,
@@ -66,7 +66,8 @@ module Mark::Template
     font-family: "Times New Roman", Times, serif; }
   .section pre { border-top: 1px solid #000; border-bottom: 1px solid #000;
      color: #fff; background: #555; width: 100%; padding: 12px 36px;
-     position: relative; right: 36px; font-family: Monaco, monospace; }
+     position: relative; right: 36px; font-family: Monaco, monospace;
+     overflow-x: auto; }
   .section pre code { font-weight: normal; }
   .section code { font-family: Monaco, monospace; font-weight: bold; }
   .section strong { border-bottom: 1px dashed #aaa; }
