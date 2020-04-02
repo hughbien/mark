@@ -8,6 +8,10 @@ targets:
   mark:
     main: src/mark.cr
 
+dependencies:
+  common_marker:
+    github: mamantoha/crystal-cmark-gfm
+
 crystal: 0.33.0
 
 license: BSD

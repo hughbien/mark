@@ -1,3 +1,3 @@
 require "./mark"
 
-Mark::Command.run
+Mark::Command.new.run

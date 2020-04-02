@@ -1,4 +1,4 @@
-require "./mark/*"
+require "./mark/**"
 
 module Mark
   VERSION = "0.1.0"

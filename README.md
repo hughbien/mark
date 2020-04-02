@@ -37,7 +37,7 @@ mark --open "firefox %" <file.md>
 Run via:
 
 ```
-crystal run src/cli.cr
+crystal run src/cli.cr -- [options] file1.md file2.md ...
 ```
 
 Run specs via:
@@ -54,7 +54,6 @@ crystal build src/cli.cr --release
 
 ## TODO
 
-* add option parser
 * add markdown renderer (to ~/.mark/mark.html)
 * add markdown render to specific file (via --file option)
 * add opening file in browser (via open)
