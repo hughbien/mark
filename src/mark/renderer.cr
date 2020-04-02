@@ -11,7 +11,9 @@ class Mark::Renderer
 
   def render
     md = @opts.sources.map { |source| File.read(source) }.join("\n")
-    html = render_markdown(md)
+    template = Template::DEFAULT_TEMPLATE
+    html = template.sub("\#{BODY}", render_markdown(md))
+
     FileUtils.mkdir_p(@opts.target_directory)
     File.write(@opts.target, html)
   end
