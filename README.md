@@ -32,9 +32,28 @@ env var or `-o`/`--open` option. Pass a string with the `%` placeholder, which w
 mark --open "firefox %" <file.md>
 ```
 
+## Development
+
+Run via:
+
+```
+crystal run src/run.cr
+```
+
+Run specs via:
+
+```
+crystal spec
+```
+
+Build a release via:
+
+```
+crystal build src/run.cr --release
+```
+
 ## TODO
 
-* add compilation to binary
 * add option parser
 * add markdown renderer (to ~/.mark/mark.html)
 * add markdown render to specific file (via --file option)
