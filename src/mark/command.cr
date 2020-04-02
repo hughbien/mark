@@ -10,6 +10,7 @@ class Mark::Command
     return unless opts
 
     Renderer.new(opts).render
+    open_target(opts)
   end
 
   private def parse_args
@@ -29,5 +30,9 @@ class Mark::Command
 
   private def print_help(parser : OptionParser)
     puts parser
+  end
+
+  private def open_target(opts)
+    system(opts.open_command)
   end
 end
