@@ -1,7 +1,7 @@
 require "../mark"
 
 class Mark::Options
-  DEFAULT_TARGET = File.join(ENV["HOME"], ".mark", "mark.html")
+  DEFAULT_TARGET = File.join(ENV["HOME"], ".mark", "index.html")
 
   getter :sources, :target
 
