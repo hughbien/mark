@@ -37,7 +37,7 @@ mark --open "firefox %" <file.md>
 Run via:
 
 ```
-crystal run src/run.cr
+crystal run src/cli.cr
 ```
 
 Run specs via:
@@ -49,7 +49,7 @@ crystal spec
 Build a release via:
 
 ```
-crystal build src/run.cr --release
+crystal build src/cli.cr --release
 ```
 
 ## TODO
