@@ -61,9 +61,3 @@ bin/build clean
 ## TODO
 
 * add binary package and install instructions to README
-* handle error: invalid flags
-* handle error: no sources given
-* handle error: invalid sources (eg cannot read or does not exist)
-* handle error: invalid target (eg cannot write)
-* handle error: invalid template (eg cannot read or does not exist)
-* handle error: invalid open command

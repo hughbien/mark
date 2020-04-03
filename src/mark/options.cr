@@ -5,6 +5,8 @@ class Mark::Options
   DEFAULT_TEMPLATE = File.join(ENV["HOME"], ".mark", "template.html")
   DEFAULT_OPEN = "open %"
 
+  class OptionError < Exception; end
+
   @sources : Array(String)
   @target : String
   @template : String?
@@ -33,6 +35,14 @@ class Mark::Options
       File.read(@template.not_nil!)
     else
       Template::DEFAULT_HTML
+    end
+  end
+
+  def validate!
+    raise OptionError.new("At least one source file must be given") unless @sources.size > 0
+    files = @sources + [@template]
+    files.compact.each do |file|
+      raise OptionError.new("File does not exist: #{file}") unless File.exists?(file)
     end
   end
 end
