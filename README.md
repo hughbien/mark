@@ -37,24 +37,29 @@ mark --open "firefox %" <file.md>
 Run via:
 
 ```
-crystal run src/cli.cr -- [options] file1.md file2.md ...
+bin/build run [options] file1.md file2.md ...
 ```
 
 Run specs via:
 
 ```
-crystal spec
+bin/build spec
 ```
 
 Build a release via:
 
 ```
-crystal build src/cli.cr --release
+bin/build release
+```
+
+Clean build artifcats with:
+
+```
+bin/build clean
 ```
 
 ## TODO
 
-* add sam or Cakefile
 * add binary package and install instructions to README
 * handle error: invalid flags
 * handle error: no sources given
