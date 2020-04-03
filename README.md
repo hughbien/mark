@@ -52,16 +52,11 @@ Build a release via:
 crystal build src/cli.cr --release
 ```
 
-# TODO
+## TODO
 
-* add markdown render to specific target (via --target option)
-* add env target option (via MARK_TARGET)
-* add opening target in browser (via open)
-* add open command option (via --open=)
-* add open env var option (via MARK_OPEN)
-* add template override (via ~/.mark/template.html)
-* add template override (via --template option)
+* add sam or Cakefile
 * add binary package and install instructions to README
+* handle error: invalid flags
 * handle error: no sources given
 * handle error: invalid sources (eg cannot read or does not exist)
 * handle error: invalid target (eg cannot write)

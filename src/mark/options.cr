@@ -2,13 +2,20 @@ require "../mark"
 
 class Mark::Options
   DEFAULT_TARGET = File.join(ENV["HOME"], ".mark", "index.html")
+  DEFAULT_TEMPLATE = File.join(ENV["HOME"], ".mark", "template.html")
   DEFAULT_OPEN = "open %"
 
-  getter :sources, :target
+  @sources : Array(String)
+  @target : String
+  @template : String?
+  @open : String
 
-  def initialize(@sources : Array(String))
-    @target = DEFAULT_TARGET
-    @open = DEFAULT_OPEN
+  getter sources, target
+
+  def initialize(@sources, options : Hash(Symbol, String))
+    @target = options.fetch(:target, ENV.fetch("MARK_TARGET", DEFAULT_TARGET))
+    @template = options.fetch(:template, ENV["MARK_TEMPLATE"]?)
+    @open = options.fetch(:open, ENV.fetch("MARK_OPEN", DEFAULT_OPEN))
   end
 
   def target_directory
@@ -17,5 +24,15 @@ class Mark::Options
 
   def open_command
     @open.sub("%", @target)
+  end
+  
+  def template_html
+    if @template.nil? && File.exists?(DEFAULT_TEMPLATE)
+      File.read(DEFAULT_TEMPLATE)
+    elsif @template
+      File.read(@template.not_nil!)
+    else
+      Template::DEFAULT_HTML
+    end
   end
 end

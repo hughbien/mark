@@ -1,7 +1,7 @@
 require "../mark"
 
 module Mark::Template
-  DEFAULT_TEMPLATE = <<-HTML
+  DEFAULT_HTML = <<-HTML
   <!doctype html>
   <head>
   <title>Markdown Preview</title>
