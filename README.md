@@ -2,6 +2,15 @@
 
 Command line utility to preview markdown in a browser.
 
+## Installation
+
+Download the binary here:
+
+* [mark v0.1.0](https://github.com/hughbien/mark/releases/download/v0.1.0/mark)
+
+Or checkout this repo and build it with `bin/build release`. The binary should be located at
+`target/mark`.
+
 ## Usage
 
 Render a markdown file in your browser:
@@ -57,7 +66,3 @@ Clean build artifcats with:
 ```
 bin/build clean
 ```
-
-## TODO
-
-* add binary package and install instructions to README
