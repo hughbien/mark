@@ -17,13 +17,18 @@ class Mark::Renderer
   EXTENSIONS = ["table", "strikethrough", "autolink", "tagfilter", "tasklist"]
   OPTIONS = ["unsafe"]
 
+  HIGHLIGHT_HEAD = "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/darcula.min.css\">"
+  HIGHLIGHT_SCRIPT = "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js\"></script><script>hljs.initHighlightingOnLoad();</script>"
+
   def initialize(@opts : Options)
   end
 
   # Reads markdown from source file(s). Writes HTML to target file.
   def render
     md = @opts.sources.map { |source| File.read(source) }.join("\n")
-    html = @opts.template_html.sub("\#{BODY}", render_markdown(md))
+    html = sub_head(@opts.template_html)
+    html = sub_script(html)
+    html = sub_body(html, render_markdown(md))
 
     FileUtils.mkdir_p(@opts.target_directory)
     File.write(@opts.target, html)
@@ -35,5 +40,19 @@ class Mark::Renderer
       options: OPTIONS,
       extensions: EXTENSIONS
     ).to_html
+  end
+
+  private def sub_body(html, body)
+    html.sub("\#{BODY}", body)
+  end
+
+  private def sub_head(html)
+    head = @opts.highlight ? HIGHLIGHT_HEAD : ""
+    html.sub("\#{HEAD}", head)
+  end
+
+  private def sub_script(html)
+    script = @opts.highlight ? HIGHLIGHT_SCRIPT : ""
+    html.sub("\#{SCRIPT}", script)
   end
 end

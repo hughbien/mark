@@ -9,6 +9,7 @@ require "../mark"
 # options.target          # => "/path/to/target.html"
 # options.template_html   # => ".... default html template ..."
 # options.open_command    # => "open /path/to/target.html"
+# options.highlight       # => false
 # options.validate!       # => no-op since all options are valid
 #
 # options = Mark::Options.new([], { :target => "/path/to/target.html" })
@@ -25,13 +26,15 @@ class Mark::Options
   @target : String
   @template : String?
   @open : String
+  @highlight : Bool
 
-  getter sources, target
+  getter sources, target, highlight
 
   def initialize(@sources, options : Hash(Symbol, String))
     @target = options.fetch(:target, ENV.fetch("MARK_TARGET", DEFAULT_TARGET))
     @template = options.fetch(:template, ENV["MARK_TEMPLATE"]?)
     @open = options.fetch(:open, ENV.fetch("MARK_OPEN", DEFAULT_OPEN))
+    @highlight = !!options.fetch(:highlight, ENV["MARK_HIGHLIGHT"]?)
   end
 
   def target_directory

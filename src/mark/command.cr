@@ -29,6 +29,7 @@ class Mark::Command
       parser.on("-v", "--version", "Print version") { print_version; quit = true }
       parser.on("-t", "--target FILE", "Target file for HTML") { |t| options[:target] = t }
       parser.on("-T", "--template FILE", "Template file for HTML") { |t| options[:template] = t }
+      parser.on("-H", "--highlight", "Toggle on syntax highlighting") { options[:highlight] = "1" }
       parser.on("-o", "--open CMD", "Open browser command") { |o| options[:open] = o }
     end
 

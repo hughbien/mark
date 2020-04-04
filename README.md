@@ -66,3 +66,9 @@ Clean build artifcats with:
 ```
 bin/build clean
 ```
+
+## TODO
+
+* extract HTML to asset file
+* add highlightjs asset files
+* add --no-highlight and/or way to unset highlight env var

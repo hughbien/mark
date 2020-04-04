@@ -4,6 +4,7 @@ module Mark::Template
   # Default HTML template for rendered markdown. If no other template is specified, use this!
   DEFAULT_HTML = <<-HTML
   <!doctype html>
+  <html>
   <head>
   <title>Markdown Preview</title>
   <style>
@@ -65,7 +66,7 @@ module Mark::Template
     right: 48px; width: 100%; font-style: italic;
     font-family: "Times New Roman", Times, serif; }
   .section pre { border-top: 1px solid #000; border-bottom: 1px solid #000;
-     color: #fff; background: #555; width: 100%; padding: 12px 48px;
+     color: #fff; background: #2b2b2b; width: 100%; padding: 12px 48px;
      position: relative; right: 48px; font-family: Monaco, monospace;
      overflow-x: auto; }
   .section pre code { font-weight: normal; }
@@ -73,11 +74,13 @@ module Mark::Template
   .section strong { border-bottom: 1px dashed #aaa; }
   .nav-layout #main { left: 115px; }
   </style>
+  \#{HEAD}
   </head>
   <body>
     <div id="main">
       <div class="section">\#{BODY}</div>
     </div>
+    \#{SCRIPT}
   </body>
   </html>
   HTML
