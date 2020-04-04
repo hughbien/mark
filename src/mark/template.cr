@@ -15,12 +15,12 @@ module Mark::Template
     font-style: inherit;
     vertical-align: baseline; 
   }
-  body { text-align: center; font-size: 12px; background: #e0e0e0;
+  body { text-align: center; font-size: 12px; background: #efefef;
     line-height: 1.7em; color: #333; width: 100%; height: 100%;
     font-family: lucida grande, helvetica, sans-serif; }
   h1,h2,h3,h4,h5,h6 { font-weight: bold; font-family: Copperplate / Copperplate Gothic Light, sans-serif; }
-  h1 { margin: 36px 0 24px; color: #111; border-bottom: 1px solid #e0e0e0; 
-    padding-bottom: 6px; font-size: 2.4em; line-height: 1.2em; }
+  h1 { margin: 48px 0 24px; color: #111; border-bottom: 1px solid #e0e0e0; 
+    padding-bottom: 6px; font-size: 3.6em; line-height: 1em; }
   h1 + p, h1 + ol, h1 + ul { margin-top: -12px; }
   h2, h3, h4, h5, h6 { margin: 24px 0; color: #111; }
   h2 + p, h2 + ol, h2 + ul,
@@ -28,11 +28,11 @@ module Mark::Template
   h4 + p, h4 + ol, h4 + ul,
   h5 + p, h5 + ol, h5 + ul,
   h6 + p, h6 + ol, h6 + ul { margin-top: -12px; }
-  h2 { font-size: 1.8em; }
+  h2 { font-size: 2.4em; }
+  h3 { font-size: 1.8em; }
   h3 { font-size: 1.6em; }
-  h3 { font-size: 1.4em; }
-  h4 { font-size: 1.2em; }
-  h5 { font-size: 1.1em; }
+  h4 { font-size: 1.4em; }
+  h5 { font-size: 1.2em; }
   h6 { font-size: 1em; }
   a { color: #a37142; text-decoration: none; }
   a:hover { color: #234f32; }
@@ -56,18 +56,17 @@ module Mark::Template
   p { margin: 24px 0; }
   p:first-child { margin-top: 0; }
   p:last-child { margin-bottom: 0; }
-  #main { width: 574px; margin: 60px auto; text-align: left; position: relative;
+  #main { width: 640px; margin: 60px auto; text-align: left; position: relative;
     left: 0; }
-  .section { padding: 36px; background: #fff; border: 1px solid #bcbcbc; 
-    -webkit-box-shadow: 2px 2px 4px #ccc; 
-    -moz-box-shadow: 2px 2px 4px #ccc; margin-bottom: 36px; }
+  .section { padding: 48px; background: #fff; -webkit-box-shadow: 0 0 4px #ccc; 
+    -moz-box-shadow: 0 0 4px #ccc; margin-bottom: 48px; }
   .section blockquote { border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;
-    background: #eee; padding: 12px 36px; position: relative;
-    right: 36px; width: 100%; font-style: italic;
+    background: #eee; padding: 12px 48px; position: relative;
+    right: 48px; width: 100%; font-style: italic;
     font-family: "Times New Roman", Times, serif; }
   .section pre { border-top: 1px solid #000; border-bottom: 1px solid #000;
-     color: #fff; background: #555; width: 100%; padding: 12px 36px;
-     position: relative; right: 36px; font-family: Monaco, monospace;
+     color: #fff; background: #555; width: 100%; padding: 12px 48px;
+     position: relative; right: 48px; font-family: Monaco, monospace;
      overflow-x: auto; }
   .section pre code { font-weight: normal; }
   .section code { font-family: Monaco, monospace; font-weight: bold; }
