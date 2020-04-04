@@ -8,7 +8,7 @@ Command line utility to preview markdown in a browser.
 
 Download the binary here:
 
-* [mark v0.1.0](https://github.com/hughbien/mark/releases/download/v0.1.0/mark)
+* [mark v0.1.1](https://github.com/hughbien/mark/releases/download/v0.1.1/mark)
 
 Or checkout this repo and build it with `bin/build release`. The binary should be located at
 `target/mark`.
