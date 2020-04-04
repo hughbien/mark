@@ -2,6 +2,8 @@
 
 Command line utility to preview markdown in a browser.
 
+![Mark Example](asset/mark.gif)
+
 ## Installation
 
 Download the binary here:
@@ -69,6 +71,7 @@ bin/build clean
 
 ## TODO
 
+* consider tempfile target in current directory to handle relative path assets
 * extract HTML to asset file
-* add highlightjs asset files
-* add --no-highlight and/or way to unset highlight env var
+* add highlightjs asset files (with more languages)
+* remove --highlight option
