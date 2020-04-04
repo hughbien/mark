@@ -21,11 +21,19 @@ Render a markdown file in your browser:
 mark <file.md>
 ```
 
-By default, this renders markdown into the target file `~/.mark/index.html`. You can specify a
-different target location via the `-t`/`--target` option. Or set the `MARK_TARGET` env var:
+By default, this renders markdown into the target file `.mark.html` of the current directory.  This
+target file is deleted after being opened in the browser. You can specify a different target
+location via the `-t`/`--target` option. Or set the `MARK_TARGET` env var:
 
 ```
 mark --target /path/to/target.html <file.md>
+```
+
+Note that this may break relative assets like images. To prevent deletion after opening, use the
+`-k`/`--keep` option. Or set the `MARK_KEEP` env var.
+
+```
+mark --keep <file.md>
 ```
 
 You can create your own template too. Just create an HTML template, the string `#{BODY}` will be
@@ -68,10 +76,3 @@ Clean build artifcats with:
 ```
 bin/build clean
 ```
-
-## TODO
-
-* consider tempfile target in current directory to handle relative path assets
-* extract HTML to asset file
-* add highlightjs asset files (with more languages)
-* remove --highlight option

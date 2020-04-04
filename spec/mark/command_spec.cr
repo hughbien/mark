@@ -35,11 +35,10 @@ describe Mark::Command do
       io_target = setup_tempfile("")
 
       Mark::Command.new(["-t", target.path, "-o", "cat % > #{io_target.path}", source.path], io).run
-      File.read(target.path).should contain(uuid.to_s)
       File.read(io_target.path).should contain(uuid.to_s)
+      File.exists?(target.path).should be_false
 
       source.delete
-      target.delete
       io_target.delete
     end
   end

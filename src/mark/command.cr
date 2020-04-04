@@ -1,4 +1,5 @@
 require "../mark"
+require "file_utils"
 require "option_parser"
 
 # Mark::Command#run is the main method which kicks off everything.
@@ -14,6 +15,7 @@ class Mark::Command
     opts.validate!
     Renderer.new(opts).render
     open_target(opts)
+    remove_target(opts)
   rescue error : OptionParser::InvalidOption | Options::OptionError
     log(error)
   end
@@ -29,7 +31,7 @@ class Mark::Command
       parser.on("-v", "--version", "Print version") { print_version; quit = true }
       parser.on("-t", "--target FILE", "Target file for HTML") { |t| options[:target] = t }
       parser.on("-T", "--template FILE", "Template file for HTML") { |t| options[:template] = t }
-      parser.on("-H", "--highlight", "Toggle on syntax highlighting") { options[:highlight] = "1" }
+      parser.on("-k", "--keep", "Keep target after generating HTML") { options[:keep] = "1" }
       parser.on("-o", "--open CMD", "Open browser command") { |o| options[:open] = o }
     end
 
@@ -46,6 +48,13 @@ class Mark::Command
 
   private def open_target(opts)
     system(opts.open_command)
+  end
+
+  private def remove_target(opts)
+    return if opts.keep
+
+    sleep(0.2) # give the browser some time to open target before removing :(
+    FileUtils.rm(opts.target)
   end
 
   private def log(message)

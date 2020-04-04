@@ -98,6 +98,15 @@ describe Mark::Options do
       source.delete
     end
 
+    it "raises when target directory does not exist" do
+      source = setup_source
+      options = build_options(source.path, { :target => "/path/to/non-existing/target.html" })
+      expect_raises(Mark::Options::OptionError, "Invalid target directory: /path/to/non-existing") do
+        options.validate!
+      end
+      source.delete
+    end
+
     it "raises when template file does not exist" do
       source = setup_source
       options = build_options([source.path], { :template => "/path/to/non-existing/template.html" })
