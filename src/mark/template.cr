@@ -1,6 +1,7 @@
 require "../mark"
 
 module Mark::Template
+  # Default HTML template for rendered markdown. If no other template is specified, use this!
   DEFAULT_HTML = <<-HTML
   <!doctype html>
   <head>

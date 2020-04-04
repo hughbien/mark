@@ -1,8 +1,10 @@
 require "../mark"
 require "option_parser"
 
+# Mark::Command#run is the main method which kicks off everything.
+# Frontend which talks to the user. Handles parsing arguments, printing errors, and printing help.
 class Mark::Command
-  def initialize(@args : Array(String) = ARGV)
+  def initialize(@args : Array(String) = ARGV, @io : IO = STDOUT)
   end
 
   def run
@@ -13,35 +15,39 @@ class Mark::Command
     Renderer.new(opts).render
     open_target(opts)
   rescue error : OptionParser::InvalidOption | Options::OptionError
-    puts error
+    log(error)
   end
 
   private def parse_args
     options = Hash(Symbol, String).new
+    quit = false
+
     OptionParser.parse(@args) do |parser|
       parser.banner = "Usage: mark [options] source1.md source2.md ..."
 
-      parser.on("-h", "--help", "Print this help message") { print_help(parser) }
-      parser.on("-v", "--version", "Print version") { print_version }
-      parser.on("-t FILE", "--target FILE", "Target file for HTML") { |t| options[:target] = t }
-      parser.on("-T FILE", "--template FILE", "Template file for HTML") { |t| options[:template] = t }
-      parser.on("-o CMD", "--open CMD", "Open browser command") { |o| options[:open] = o }
+      parser.on("-h", "--help", "Print this help message") { print_help(parser); quit = true }
+      parser.on("-v", "--version", "Print version") { print_version; quit = true }
+      parser.on("-t", "--target FILE", "Target file for HTML") { |t| options[:target] = t }
+      parser.on("-T", "--template FILE", "Template file for HTML") { |t| options[:template] = t }
+      parser.on("-o", "--open CMD", "Open browser command") { |o| options[:open] = o }
     end
 
-    Options.new(@args, options)
+    quit ? nil : Options.new(@args, options)
   end
 
   private def print_version
-    puts VERSION
-    exit(0)
+    log(VERSION)
   end
 
   private def print_help(parser : OptionParser)
-    puts parser
-    exit(0)
+    log(parser)
   end
 
   private def open_target(opts)
     system(opts.open_command)
+  end
+
+  private def log(message)
+    @io.puts message
   end
 end

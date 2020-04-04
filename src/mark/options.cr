@@ -1,5 +1,19 @@
 require "../mark"
 
+# Wraps arguments and options from CLI. Handles setting defaults and running validations.
+#
+# Example usage:
+# ```
+# options = Mark::Options.new(["source.md"], { :target => "/path/to/target.html" })
+# options.sources         # => ["source.md"]
+# options.target          # => "/path/to/target.html"
+# options.template_html   # => ".... default html template ..."
+# options.open_command    # => "open /path/to/target.html"
+# options.validate!       # => no-op since all options are valid
+#
+# options = Mark::Options.new([], { :target => "/path/to/target.html" })
+# options.validate!       # => raises OptionError, at least one source required
+# ```
 class Mark::Options
   DEFAULT_TARGET = File.join(ENV["HOME"], ".mark", "index.html")
   DEFAULT_TEMPLATE = File.join(ENV["HOME"], ".mark", "template.html")
