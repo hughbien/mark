@@ -53,26 +53,11 @@ mark --open "firefox %" <file.md>
 
 ## Development
 
-Run via:
+Use `make` for common tasks:
 
-```
-bin/build run [options] file1.md file2.md ...
-```
-
-Run specs via:
-
-```
-bin/build spec
-```
-
-Build a release via:
-
-```
-bin/build release
-```
-
-Clean build artifcats with:
-
-```
-bin/build clean
-```
+* `make spec` to run all tests
+* `make spec ARGS=path/to/spec` to run a single test
+* `make build` to create a release binary in the target directory
+* `make clean` to remove build artifacts and release binary
+* `make run ARGS="file1.md file2.md"` to run locally
+* `make run ARGS=-h` to run with local arguments
