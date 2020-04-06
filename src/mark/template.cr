@@ -1,5 +1,5 @@
 require "../mark"
 
 module Mark::Template
-  DEFAULT_HTML = {{ `cat #{__DIR__}/../../asset/template.html`.stringify }}
+  DEFAULT_HTML = {{ read_file "#{__DIR__}/../../asset/template.html" }}
 end
