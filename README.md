@@ -10,8 +10,7 @@ Download the binary here:
 
 * [mark v0.1.1](https://github.com/hughbien/mark/releases/download/v0.1.1/mark)
 
-Or checkout this repo and build it with `bin/build release`. The binary should be located at
-`target/mark`.
+Or checkout this repo and build it with `make build`. The binary should be located at `target/mark`.
 
 ## Usage
 
