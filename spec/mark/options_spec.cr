@@ -58,6 +58,26 @@ describe Mark::Options do
     end
   end
 
+  describe "#keep_for_seconds" do
+    it "sets via initialization" do
+      options = build_options({ :keep_for => "1000" })
+      options.keep_for_seconds.should eq(1)
+    end
+
+    it "sets via ENV var" do
+      ENV["MARK_KEEP_FOR"] = "2000"
+      options = build_options
+      options.keep_for_seconds.should eq(2)
+      ENV.delete("MARK_KEEP_FOR")
+    end
+
+    it "raises error on invalid format" do
+      expect_raises(Mark::Options::OptionError, "Invalid keep for: invalid-int") do
+        build_options({ :keep_for => "invalid-int" })
+      end
+    end
+  end
+
   describe "#template_html" do
     it "reads from initialization" do
       template = setup_template("<html></html>")

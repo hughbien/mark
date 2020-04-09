@@ -35,6 +35,13 @@ Note that this may break relative assets like images. To prevent deletion after 
 mark --keep <file.md>
 ```
 
+Without `--keep`, the target file is kept for 300ms by default. To extend this time use the
+`-K`/`--keep-for` option or set the `MARK_KEEP_FOR` env var.
+
+```
+mark --keep-for 500 <file.md>
+```
+
 You can create your own template too. Just create an HTML template, the string `#{BODY}` will be
 substituted with the rendered markdown. The default location for the template is
 `~/.mark/template.html`. Or you can specify it with `-T`/`--template`.

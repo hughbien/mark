@@ -32,6 +32,7 @@ class Mark::Command
       parser.on("-t", "--target FILE", "Target file for HTML") { |t| options[:target] = t }
       parser.on("-T", "--template FILE", "Template file for HTML") { |t| options[:template] = t }
       parser.on("-k", "--keep", "Keep target after generating HTML") { options[:keep] = "1" }
+      parser.on("-K", "--keep-for MS", "Milliseconds before deleting target") { |s| options[:keep_for] = s }
       parser.on("-o", "--open CMD", "Open browser command") { |o| options[:open] = o }
     end
 
@@ -53,7 +54,7 @@ class Mark::Command
   private def remove_target(opts)
     return if opts.keep
 
-    sleep(0.2) # give the browser some time to open target before removing :(
+    sleep(opts.keep_for_seconds) # give the browser some time to open target before removing :(
     FileUtils.rm(opts.target)
   end
 
