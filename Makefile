@@ -4,18 +4,16 @@ spec: test
 test:
 	crystal spec $(ARGS)
 
-build: target/mark
-target/mark:
-	crystal build src/cli.cr --release
-	mkdir -p target
-	mv cli target/mark
-	rm cli.dwarf
+build: bin/mark
+bin/mark:
+	shards build --production
+	rm bin/mark.dwarf
 
 install: build
-	cp target/mark $(INSTALL_BIN)
+	cp bin/mark $(INSTALL_BIN)
 
 clean:
-	rm -rf cli cli.dwarf target
+	rm -rf bin
 
 run:
 	crystal run src/cli.cr -- $(ARGS)

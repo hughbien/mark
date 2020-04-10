@@ -6,13 +6,13 @@ authors:
 
 targets:
   mark:
-    main: src/mark.cr
+    main: src/cli.cr
 
 dependencies:
   common_marker:
     github: mamantoha/crystal-cmark-gfm
     version: ~> 0.3
 
-crystal: 0.33.0
+crystal: 0.34.0
 
 license: BSD

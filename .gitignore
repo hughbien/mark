@@ -1,5 +1,6 @@
 /docs/
 /lib/
 /.shards/
+/bin/
 *.dwarf
 .mark.html

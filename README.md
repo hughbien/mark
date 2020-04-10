@@ -10,7 +10,7 @@ Download the binary here:
 
 * [mark v0.1.1](https://github.com/hughbien/mark/releases/download/v0.1.1/mark)
 
-Or checkout this repo and build it with `make build`. The binary should be located at `target/mark`.
+Or checkout this repo and build it with `make build`. The binary should be located at `bin/mark`.
 
 ## Usage
 
@@ -64,9 +64,9 @@ Use `make` for common tasks:
 ```
 make spec                         # to run all tests
 make spec ARGS=path/to/spec       # to run a single test
-make build                        # to create a release binary in the target directory
+make build                        # to create a release binary in the bin directory
 make install                      # to copy release binary into system bin (uses $INSTALL_BIN)
-make clean                        # to remove build artifacts and target directory
+make clean                        # to remove build artifacts and bin directory
 make run ARGS="file1.md file2.md" # to run locally
 make run ARGS=-h                  # to run with local arguments
 ```
