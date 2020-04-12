@@ -56,4 +56,18 @@ describe Mark::Renderer do
     source.delete
     target.delete
   end
+
+  it "formats front matter YAML" do
+    source = setup_source("---\none: two\n---\nHello, World!")
+    options = build_options(source.path)
+
+    renderer = Mark::Renderer.new(options)
+    renderer.render
+
+    html = File.read(options.target)
+    html.should contain("<pre>")
+    html.should contain("<code")
+    html.should contain("language-yaml")
+    source.delete
+  end
 end
