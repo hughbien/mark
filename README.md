@@ -4,13 +4,27 @@ Command line utility to preview markdown in a browser.
 
 ![Mark Example](asset/mark.gif)
 
-## Installation
+## Install
 
-Download the binary here:
+**Mac**
 
-* [mark v0.1.1](https://github.com/hughbien/mark/releases/tag/v0.1.1)
+```
+brew install hughbien/tap/mark
+```
 
-Or checkout this repo and build it with `make build`. The binary should be located at `bin/mark`.
+This will install Crystal as a dependency. If you already have a non-homebrew Crystal installed, you
+can use the `--ignore-dependencies crystal` option.
+
+**Linux (From Source)**
+
+Checkout this repo, run `make` and `make install` (requires [Crystal](https://crystal-lang.org/install/)):
+
+```
+git clone https://github.com/hughbien/mark.git
+cd mark
+make
+make install
+```
 
 ## Usage
 
@@ -66,12 +80,7 @@ make spec                         # to run all tests
 make spec ARGS=path/to/spec       # to run a single test
 make build                        # to create a release binary in the bin directory
 make install                      # to copy release binary into system bin (uses $INSTALL_BIN)
-make release                      # to build releases for darwin/linux (requires docker)
 make clean                        # to remove build artifacts and bin directory
 make run ARGS="file1.md file2.md" # to run locally
 make run ARGS=-h                  # to run with local arguments
 ```
-
-## TODO
-
-* fix alpine-linux release build
